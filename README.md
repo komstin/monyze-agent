@@ -27,24 +27,19 @@ optional arguments:
  -h, --help             Помощь
 
  -c {show, delete}, --config {show, delete}
- 
                           Конфигурация: показать,
                           удалить
 
-
   -a {start,stop,restart,status}, --action {start,stop,restart,status}
-  
                           Действие: запустить,
                           остановить, перезапустить,
                           статус
 
   -t TIMEOUT, --timeout TIMEOUT
-  
                           Задать временной интервал
                           мониторинга в секундах
 
   -u USERID, --userid USERID
-  
                           Задать userId
 
   -v, --version

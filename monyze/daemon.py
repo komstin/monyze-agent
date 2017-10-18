@@ -28,7 +28,9 @@ class daemon:
 
     def daemonize(self):
         self.fork()
-        self.dettach_env()
+        os.chdir('/')
+        os.setsid()
+        os.umask(0)
         self.fork()
 
         sys.stdout.flush()
@@ -42,11 +44,6 @@ class daemon:
     def attach_stream(self, name, mode):
         stream = open(getattr(self, name), mode)
         os.dup2(stream.fileno(), getattr(sys, name).fileno())
-
-    def dettach_env(self):
-        os.chdir("/")
-        os.setsid()
-        os.umask(0)
 
     def fork(self):
         try:

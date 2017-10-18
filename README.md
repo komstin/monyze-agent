@@ -26,9 +26,10 @@ optional arguments:
 
  -h, --help             Помощь
 
-  -c {show,delete}, --config {show,delete}
-                          Конфигурация: показать,
-                          удалить
+ -c {show, delete}, --config {show, delete}
+                        Конфигурация: показать,
+                        удалить
+
   -a {start,stop,restart,status}, --action {start,stop,restart,status}
                           Действие: запустить,
                           остановить, перезапустить,

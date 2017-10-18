@@ -22,9 +22,9 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 
 Мониторинг Monyze
 
-optional arguments:
+Параметры командной строки:
 
- -h, --help - Помощь
+ -h, --help - Показать подсказку
  
  -c {show, delete}, --config {show, delete} - Конфигурация: показать, удалить
  

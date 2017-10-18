@@ -3,11 +3,19 @@ MONYZE monitoring agent
 
 ================== Russian ===================
 
-Агент для сервиса Monyze - https://monyze.ru/
+Агент для сервиса Monyze - https://monyze.ru/ Версия 0.0.3
 
 Обмен с сервером по заданному (нестандартному) протоколу. Не RESTful.
 
 Работа на заказ. Не закончена, в процессе.
+
+Запуск:
+
+Модуль monyze-agent в /dist
+
+chmod +x monyze-agent
+
+./monyze-agent --help
 
 TODO:
 1. Сделать запуск сервисом.

@@ -23,7 +23,9 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 Мониторинг Monyze
 
 optional arguments:
+
   -h, --help            Помощь
+
   -c {show,delete}, --config {show,delete}
                         Конфигурация: показать,
                         удалить

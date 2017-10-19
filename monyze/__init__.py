@@ -23,7 +23,7 @@ def parse():
     parser = argparse.ArgumentParser(prog='monyze', add_help=False,
                                      description='Мониторинг Monyze',
                                      epilog='Подробнее - на сайте https://monyze.ru')
-    parser.add_argument("-h", "--help", action='store_true', help="Помощь")
+    parser.add_argument("-h", "--help", action='store_true', help="Показать подсказку")
     parser.add_argument("-c", "--config", choices=['show', 'delete'],
                         help="Конфигурация: показать, удалить")
     parser.add_argument("-a", "--action", choices=['start', 'stop', 'restart', 'status'],

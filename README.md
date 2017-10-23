@@ -24,17 +24,23 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 
 Параметры командной строки:
 <pre>
- -h, --help - Показать подсказку
+ -h, --help
+      Показать подсказку
  
- -c {show, delete}, --config {show, delete} - Конфигурация: показать, удалить
+ -c {show, delete}, --config {show, delete}
+      Конфигурация: показать, удалить
  
- -a {start,stop,restart,status}, --action {start,stop,restart,status} - Действие: запустить, остановить, перезапустить, статус
+ -a {start,stop,restart,status}, --action {start,stop,restart,status}
+      Действие: запустить, остановить, перезапустить, статус
  
- -t TIMEOUT, --timeout TIMEOUT - Задать временной интервал мониторинга в секундах
+ -t TIMEOUT, --timeout TIMEOUT
+      Задать временной интервал мониторинга в секундах
  
- -u USERID, --userid USERID - Задать userId
+ -u USERID, --userid USERID
+      Задать userId
  
- -v, --version - Показать версию и выйти
+ -v, --version
+      Показать версию и выйти
 
 Подробнее - на сайте https://monyze.ru
 </pre>

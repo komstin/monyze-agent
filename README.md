@@ -14,7 +14,6 @@ MONYZE monitoring agent
 Для запуска демона предназначен модуль monyze-agent, расположенный в фолдере dist/. Модуль скомпилирован с помощью PyInstaller с параметром -F (упаковка одним файлом) и key=... Последнее - для пользователей, которые не ищут источники на Гитхабе.
 
 <code>chmod +x monyze-agent
-
 ./monyze-agent --help</code>
 
 usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
@@ -26,28 +25,23 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 <pre>
  -h, --help
       Показать подсказку
- 
  -c {show, delete}, --config {show, delete}
       Конфигурация: показать, удалить
- 
  -a {start,stop,restart,status}, --action {start,stop,restart,status}
       Действие: запустить, остановить, перезапустить, статус
- 
  -t TIMEOUT, --timeout TIMEOUT
       Задать временной интервал мониторинга в секундах
- 
  -u USERID, --userid USERID
       Задать userId
- 
  -v, --version
       Показать версию и выйти
-
 Подробнее - на сайте https://monyze.ru
 </pre>
 
 TODO:
 1. Сделать запуск сервисом.
 2. Пока сделано для Debian/Ubuntu, расширить на другие Linux-платформы.
+
 Дополнительно:
 3. Расширить на Windows-платформу.
 4. Желательно: переделать Backend, сменить протокол на REST.

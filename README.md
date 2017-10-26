@@ -45,7 +45,7 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 - [x] Collect & update system data
 - [x] Compile in one file
 - [x] Daemonize
-- [.] Setup as a service
+- [ ] Setup as a service
 - [ ] Extend for misc Linux'es
 
 #### Extra TODO

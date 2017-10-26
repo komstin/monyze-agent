@@ -42,7 +42,6 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 #### TODO:
 1. Сделать запуск сервисом.
 2. Пока сделано для Debian/Ubuntu, расширить на другие Linux-платформы.
-<script src="https://gist.github.com/komstin/1848936fb33a6c22aed103f1f5f5f6a8.js"></script>
 
 #### Дополнительно:
 3. Расширить на Windows-платформу.

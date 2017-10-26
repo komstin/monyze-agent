@@ -39,11 +39,16 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 </pre>
 Подробнее - на сайте https://monyze.ru
 
-#### TODO:
-1. Сделать запуск сервисом.
-2. Пока сделано для Debian/Ubuntu, расширить на другие Linux-платформы.
+#### TODO List for Monyze Project
 
-#### Дополнительно:
-3. Расширить на Windows-платформу.
-4. Желательно: переделать Backend, сменить протокол на REST.
-5. Лучше всего радикально реконструировать архитектуру.
+- [x] Setup request in preassigned format
+- [x] Collect & update system data
+- [x] Compile in one file
+- [x] Daemonize
+- [~] Setup as a service
+- [ ] Extend for misc Linux'es
+
+#### Extra TODO
+- [ ] Расширить на Windows-платформу.
+- [ ] Желательно: переделать Backend, сменить протокол на REST.
+- [ ] Лучше всего радикально реконструировать архитектуру.

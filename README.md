@@ -16,14 +16,14 @@ MONYZE monitoring agent
 <code>chmod +x monyze-agent</code>
 
 <code>./monyze-agent --help</code>
-
+<pre><code>
 usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
               [-t TIMEOUT] [-u USERID] [-v]
-
+</code></pre>
 Мониторинг Monyze
 
 #### Параметры командной строки:
-<pre>
+<pre><code>
  -h, --help
       Показать подсказку
  -c {show, delete}, --config {show, delete}
@@ -36,7 +36,7 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
       Задать userId
  -v, --version
       Показать версию и выйти
-</pre>
+</code></pre>
 Подробнее - на сайте https://monyze.ru
 
 #### TODO List for Monyze Project

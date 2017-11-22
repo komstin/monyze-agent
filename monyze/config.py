@@ -7,6 +7,7 @@ __copyright__ = 'Copyright (C) Monyze. All rights reserved.'
 __credits__ = ['Konstantin Lyakhov (Skype: komstin)', 'Dmitry Soloviev (Skype: gex_skype)']
 __license__ = ''
 
+import logging
 import datetime
 import cPickle as pickle
 import platform
@@ -20,6 +21,8 @@ class config:
     ''' Configuration - get, update, store, restore '''
 
     def __init__(self, filename):
+        logger = logging.getLogger("monyze-agent.config")
+
         self.filename = filename
         try:
             with open(self.filename, 'rb') as f:
@@ -27,8 +30,11 @@ class config:
                 for key, value in store.__dict__.items():
                     self.__dict__[key] = value
                 self.restored_at = datetime.datetime.now()
+            logger.info("Config loaded")
 
         except (IOError, EOFError):
+            if os.getuid():
+                raise SystemExit('\nТребуются права администратора! Попробуйте использовать команду sudo.\n')
             self.name = 'monyze-agent'
             self.description = 'Monyze monitoring agent'
             self.computerId = self.computerId()
@@ -42,7 +48,7 @@ class config:
 #            self.api_url = 'http://dev.monyze.ru/api.php'
             self.api_url = 'https://monyze.ru/api.php'
 #            self.api_url = 'http://test/api.php'
-            self.version = '0.0.4 (17.10.2017)'
+            self.version = '0.0.6 (22.11.2017)'
 #            self.version = '0.0.4-dev (17.10.2017)'
             self.osSystem = platform.system()
             self.osRelease = platform.release()
@@ -50,6 +56,7 @@ class config:
             self.machine = platform.machine()
 #            print self
             self.store()
+            logger.info("Config created")
 
     def computerId(self):
 
@@ -67,8 +74,7 @@ class config:
 
     def userId(self):
         userId = raw_input(
-            '\nСохраненная конфигурация отсутствует. \
-            Введите идентификатор пользователя, выданный на сайте: ')
+            '\nВведите идентификатор пользователя, выданный на сайте: ')
         return userId or '8dfa018ba64311eed1033791a7e4389acbe5379e0c7c5abdc6c405acef6b9841'
 
     def nodename(self):
@@ -104,6 +110,8 @@ class config:
             ["grep", "model name\t:", "/proc/cpuinfo"]).split('\n')[0].split(':')[1].strip()
 
     def store(self):  # Validate!
+        if os.getuid():
+            raise SystemExit('\nТребуются права администратора! Попробуйте использовать команду sudo.\n')
         with open(self.filename, 'wb') as f:
             self.stored_at = datetime.datetime.now()
             pickle.dump(self, f, 2)

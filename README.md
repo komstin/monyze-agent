@@ -24,20 +24,22 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 Мониторинг Monyze
 
 #### Параметры командной строки:
-<pre><code>
- -h, --help
+
+```
+Без параметров (sudo) - запуск сервиса
+
+-h, --help
       Показать подсказку
- -c {show, delete}, --config {show, delete}
+-c {show, delete}, --config {show, delete}
       Конфигурация: показать, удалить
- -a {start,stop,restart,status}, --action {start,stop,restart,status}
-      Действие: запустить, остановить, перезапустить, статус
- -t TIMEOUT, --timeout TIMEOUT
+-t TIMEOUT, --timeout TIMEOUT
       Задать временной интервал мониторинга в секундах
- -u USERID, --userid USERID
+-u USERID, --userid USERID
       Задать userId
- -v, --version
+-v, --version
       Показать версию и выйти
-</code></pre>
+```
+
 Подробнее - на сайте https://monyze.ru
 
 #### TODO List for Monyze Project
@@ -46,7 +48,8 @@ usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
 - [x] Collect & update system data
 - [x] Compile in one file
 - [x] Daemonize
-- [ ] Setup as a service
+- [x] Setup as a service
+- [x] Logging
 - [ ] Extend for misc Linux'es
 
 #### Extra TODO

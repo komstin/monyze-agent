@@ -7,6 +7,7 @@ __copyright__ = 'Copyright (C) Monyze. All rights reserved.'
 __credits__ = ['Konstantin Lyakhov (Skype: komstin)', 'Dmitry Soloviev (Skype: gex_skype)']
 __license__ = ''
 
+import logging
 import netifaces
 import psutil
 
@@ -15,6 +16,7 @@ class data():
     ''' Monitoring data - get, update '''
 
     def __init__(self, config):
+        logger = logging.getLogger("monyze-agent.data")
         self.main_parameters = [{'ID_COMPUTER': config.computerId,
                                  'ID_USER': config.userId,
                                  'COMPUTER_NAME': config.nodename,
@@ -42,8 +44,10 @@ class data():
                     {'Name': interface, 'Addr': net[0]['addr'], 'Netmask': net[0]['netmask']})
             except KeyError:
                 continue
+        logger.info("Data initiated")
 
     def update(self):
+        logger = logging.getLogger("monyze-agent.update")
         self.cpu['CPU_ALL'] = psutil.cpu_percent()
         percents = psutil.cpu_percent(interval=0, percpu=True)
         for i, percent in enumerate(percents):
@@ -52,3 +56,13 @@ class data():
         self.memory[0]['dwMemoryLoad'] = mem.percent
         self.memory[0]['ullTotalPhys'] = mem.total
         self.memory[0]['ullAvailPhys'] = mem.available
+
+        partitions = psutil.disk_partitions()
+        self.hdd = list()
+        for i, partition in enumerate(partitions):
+            usage = psutil.disk_usage(partition.mountpoint)
+            self.hdd.append({"Name": partition.device,
+                             "Size": usage.total,
+                             "LOGICAL": partition.mountpoint,
+                             "LOAD": usage.percent})
+        

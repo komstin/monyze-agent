@@ -7,6 +7,7 @@ __copyright__ = 'Copyright (C) Monyze. All rights reserved.'
 __credits__ = ['Konstantin Lyakhov (Skype: komstin)', 'Dmitry Soloviev (Skype: gex_skype)']
 __license__ = ''
 
+import logging
 import os
 import sys
 import time
@@ -21,24 +22,26 @@ class daemon:
 
     def __init__(self, pidfile, stdin='/dev/null',
                  stdout='/dev/null', stderr='/dev/null'):
+        logger = logging.getLogger("monyze-agent.daemon")
+
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
         self.pidfile = pidfile
+        logger.info("Daemon initiated")
 
     def daemonize(self):
         self.fork()
-        os.chdir('/')
-        os.setsid()
-        os.umask(0)
+        os.chdir('/') # смена pwd, чтобы не блокировать текущий
+        os.setsid() # новый сеанс
+        os.umask(0) # права доступа создаваемым файлам
         self.fork()
 
         sys.stdout.flush()
         sys.stderr.flush()
-
         self.attach_stream('stdin', mode='r')
         self.attach_stream('stdout', mode='a+')
-#        self.attach_stream('stderr', mode='a+')
+#        self.attach_stream('stderr', mode='a+') # в релизе раскомментировать
         self.create_pidfile()
 
     def attach_stream(self, name, mode):
@@ -49,9 +52,9 @@ class daemon:
         try:
             pid = os.fork()
             if pid > 0:
-                sys.exit(0)
+                sys.exit(0) # Демон запущен
         except OSError as e:
-            sys.stderr.write("Fork failed: %d (%s)\n" % (e.errno, e.strerror))
+            sys.stderr.write("\nНе удалось запустить: %d (%s)\n" % (e.errno, e.strerror))
             sys.exit(1)
 
     def create_pidfile(self):

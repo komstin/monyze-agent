@@ -5,7 +5,7 @@ MONYZE monitoring agent
 
 ## Агент для сервиса Monyze - приложение на Питоне, собирающее системные метрики для сервиса https://monyze.ru/. 
 
-Версия 0.0.5
+Версия 0.0.6
 
 Обмен с сервером по заданному (нестандартному) протоколу в формате json. Не RESTful.
 
@@ -13,13 +13,14 @@ MONYZE monitoring agent
 
 Для запуска демона предназначен модуль monyze-agent, расположенный в фолдере dist/. Модуль скомпилирован с помощью PyInstaller с параметром -F (упаковка одним файлом) и key=... Последнее - для пользователей, которые не ищут источники на Гитхабе.
 
-<code>chmod +x monyze-agent</code>
+`chmod +x monyze-agent`
 
-<code>./monyze-agent --help</code>
-<pre><code>
+`./monyze-agent --help`
+
+```bash
 usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
               [-t TIMEOUT] [-u USERID] [-v]
-</code></pre>
+```
 Мониторинг Monyze
 
 #### Параметры командной строки:

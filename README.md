@@ -17,7 +17,7 @@ MONYZE monitoring agent
 
 `./monyze-agent --help`
 
-```bash
+```
 usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
               [-t TIMEOUT] [-u USERID] [-v]
 ```

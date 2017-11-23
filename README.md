@@ -13,7 +13,11 @@ MONYZE monitoring agent
 
 Для запуска демона и контроля предназначен модуль monyze-agent, расположенный в фолдере dist/. Модуль скомпилирован с помощью PyInstaller с параметром -F (упаковка одним файлом) и key=... Последнее - для пользователей, которые не ищут источники на Гитхабе.
 
+Для запуска:
+
 `chmod +x monyze-agent`
+
+Помощь:
 
 `./monyze-agent --help`
 
@@ -21,7 +25,6 @@ MONYZE monitoring agent
 usage: monyze [-h] [-c {show,delete}] [-a {start,stop,restart,status}]
               [-t TIMEOUT] [-u USERID] [-v]
 ```
-Мониторинг Monyze
 
 #### Параметры командной строки:
 

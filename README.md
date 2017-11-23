@@ -42,9 +42,9 @@ usage: monyze [-h] [-c {show,delete}] [-v] [-t TIMEOUT] [-u USERID]
       мониторинга в секундах (sudo)
 -u USERID, --userid USERID
       Задать userId (sudo)
-```
 
 Подробнее - на сайте https://monyze.ru
+```
 
 #### TODO List for Monyze Project
 

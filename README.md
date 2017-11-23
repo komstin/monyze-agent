@@ -33,13 +33,15 @@ usage: monyze [-h] [-c {show,delete}] [-v] [-t TIMEOUT] [-u USERID]
 -h, --help
       Показать подсказку
 -c {show, delete}, --config {show, delete}
-      Конфигурация: показать, удалить
--t TIMEOUT, --timeout TIMEOUT
-      Задать временной интервал мониторинга в секундах
--u USERID, --userid USERID
-      Задать userId
+      Конфигурация: показать,
+      удалить (sudo)
 -v, --version
-      Показать версию и выйти
+      Показать версию
+-t TIMEOUT, --timeout TIMEOUT
+      Задать временной интервал
+      мониторинга в секундах (sudo)
+-u USERID, --userid USERID
+      Задать userId (sudo)
 ```
 
 Подробнее - на сайте https://monyze.ru

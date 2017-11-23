@@ -57,6 +57,6 @@ usage: monyze [-h] [-c {show,delete}] [-v] [-t TIMEOUT] [-u USERID]
 - [ ] Extend for misc Linux'es
 
 #### Extra TODO
-- [ ] Расширить на Windows-платформу.
+- [ ] Expand for Windows
 - [ ] Желательно: переделать Backend, сменить протокол на REST.
 - [ ] Лучше всего радикально реконструировать архитектуру.

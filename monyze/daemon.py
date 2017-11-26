@@ -22,13 +22,14 @@ class daemon:
 
     def __init__(self, pidfile, stdin='/dev/null',
                  stdout='/dev/null', stderr='/dev/null'):
-        logger = logging.getLogger("monyze-agent.daemon")
+        self.logger = logging.getLogger("monyze.daemon")
+        self.logger.info("Инициализация демона")
 
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
         self.pidfile = pidfile
-        logger.info("Daemon initiated")
+#        self.logger.info("Демон инициализирован")
 
     def daemonize(self):
         self.fork()
@@ -73,6 +74,7 @@ class daemon:
             sys.exit(1)
         self.daemonize()
         self.run(config, data)
+#        self.logger.info("Демон запущен")
 
     def get_pid(self):
         try:
@@ -104,17 +106,18 @@ class daemon:
             else:
                 sys.stdout.write(str(err))
                 sys.exit(1)
+#        self.logger.info("Демон остановлен")
 
     def restart(self, config, data):
         self.stop(silent=True)
         self.start(config, data)
 
     def run(self, config, data):
-
         while True:
             try:
                 time.sleep(config.timeout)
             except KeyboardInterrupt:
+#                self.logger.info("Мониторинг прерван с клавиатуры")
                 raise SystemExit('\nМониторинг прерван!\n')
 
             data.update()

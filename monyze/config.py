@@ -21,7 +21,8 @@ class config:
     ''' Configuration - get, update, store, restore '''
 
     def __init__(self, filename):
-        logger = logging.getLogger("monyze-agent.config")
+        self.logger = logging.getLogger("monyze.config")
+        self.logger.info("Инициализация конфига")
 
         self.filename = filename
         try:
@@ -30,11 +31,12 @@ class config:
                 for key, value in store.__dict__.items():
                     self.__dict__[key] = value
                 self.restored_at = datetime.datetime.now()
-            logger.info("Config loaded")
+            self.logger.info("Конфиг загружен")
 
         except (IOError, EOFError):
             if os.getuid():
-                raise SystemExit('\nТребуются права администратора! Попробуйте использовать команду sudo.\n')
+#                raise SystemExit('\nТребуются права администратора! Попробуйте использовать команду sudo.\n')
+                raise SystemExit('Конфиг отсутствует! Попробуйте запустить (перезапустить) сервис.')
             self.name = 'monyze-agent'
             self.description = 'Monyze monitoring agent'
             self.computerId = self.computerId()
@@ -45,10 +47,9 @@ class config:
             self.os = self.os()
             self.timeout = 5
             self.url = 'http://monyze.ru/'
-#            self.api_url = 'http://dev.monyze.ru/api.php'
+            self.api_url = 'http://dev.monyze.ru/api.php'
             self.api_url = 'https://monyze.ru/api.php'
-#            self.api_url = 'http://test/api.php'
-            self.version = '0.0.6 (22.11.2017)'
+            self.version = '0.0.7 (26.11.2017)'
 #            self.version = '0.0.4-dev (17.10.2017)'
             self.osSystem = platform.system()
             self.osRelease = platform.release()
@@ -56,7 +57,7 @@ class config:
             self.machine = platform.machine()
 #            print self
             self.store()
-            logger.info("Config created")
+            self.logger.info("Конфиг создан")
 
     def computerId(self):
 
@@ -143,7 +144,8 @@ class config:
             if isinstance(value, datetime.datetime):
                 value = value.isoformat()
             lines.append('{0} : {1!r}'.format(key.ljust(width), value))
-        return '\n' + '\n'.join(lines) + '\n'
+#        return '\n' + '\n'.join(lines) + '\n'
+        return '\n'.join(lines)
 
     def __repr__(self):
         return '{0}({1!r})'.format(self.__class__.__name__, self.filename)

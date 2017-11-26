@@ -33,13 +33,14 @@ def main():
             "fileHandler":{
                 "class":"logging.FileHandler",
                 "formatter":"myFormatter",
-                "filename":"/tmp/monyze-agent.log"
+                "filename":"/var/log/monyze-agent.log"
             }
         },
         "loggers":{
-            "monyze-agent":{
+            "monyze":{
                 "handlers":["fileHandler"],
                 "level":"INFO",
+#                "level":"DEBUG",
             }
         },
         "formatters":{
@@ -49,40 +50,39 @@ def main():
         }
     }
     
-    logging.config.dictConfig(logConfig)
-    logger = logging.getLogger("monyze-agent.main")
-    logger.info("Program started in %s" % os.getcwd())
-    logger.info("argv: %s" % sys.argv)
-#    print("Program started in %s" % os.getcwd())
-#    print("argv: %s" % sys.argv)
-        
-#    if os.getcwd() == '/usr/local/bin':
     if sys.argv[0] == '/usr/local/bin/monyze-agent':
+        logging.config.dictConfig(logConfig)
+        logger = logging.getLogger("monyze.main")
+        logger.info("\n*** Starting: %s" % sys.argv[1])
+
         daemon = daemon('/var/run/monyze-agent.pid')
-        config = config('/etc/monyze-agent/config.pickle')
-        data = data(config)
-
-        if sys.argv[1] == 'start':
-            if not daemon.get_pid():
-                print("\nАгент запущен.\n")
-                daemon.start(config, data)
-            else:
-                raise SystemExit('\nАгент уже запущен.\n')
-
-        if sys.argv[1] == 'restart':
-            if not daemon.get_pid():
-                raise SystemExit('\nАгент не запущен.\n')
-            else:
-                print '\nАгент перезапущен.\n'
-                daemon.restart(config, data)
 
         if sys.argv[1] == 'stop':
             if not daemon.get_pid():
-                raise SystemExit('\nАгент не запущен.\n')
+                logger.info("Демон не запущен, нечего останавливать. Exit")
             else:
+                logger.info("Останавливаем демона")
                 daemon.stop()
-                raise SystemExit('\nАгент остановлен.\n')
-        logger.info("Done in /usr/local/bin")
+
+        if sys.argv[1] == 'start':
+            if not daemon.get_pid():
+                config = config('/etc/monyze-agent/config.pkl')
+                data = data(config)
+                logger.info("Запускаем демона")
+                daemon.start(config, data)
+            else:
+                logger.info("Демон уже запущен. Exit")
+
+        if sys.argv[1] == 'restart':
+            if not daemon.get_pid():
+                logger.info("Демон не запущен, restart невозможен. Exit")
+            else:
+                config = config('/etc/monyze-agent/config.pkl')
+                data = data(config)
+                logger.info("Перезапускаем демона")
+                daemon.restart(config, data)
+
+        logger.info('Stopping')
         return
 
     parse()

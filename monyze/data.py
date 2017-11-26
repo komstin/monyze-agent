@@ -16,7 +16,8 @@ class data():
     ''' Monitoring data - get, update '''
 
     def __init__(self, config):
-        logger = logging.getLogger("monyze-agent.data")
+        logger = logging.getLogger("monyze.data")
+        logger.info("Инициализация данных")
         self.main_parameters = [{'ID_COMPUTER': config.computerId,
                                  'ID_USER': config.userId,
                                  'COMPUTER_NAME': config.nodename,
@@ -44,10 +45,9 @@ class data():
                     {'Name': interface, 'Addr': net[0]['addr'], 'Netmask': net[0]['netmask']})
             except KeyError:
                 continue
-        logger.info("Data initiated")
+        logger.info("Данные инициализированы")
 
     def update(self):
-        logger = logging.getLogger("monyze-agent.update")
         self.cpu['CPU_ALL'] = psutil.cpu_percent()
         percents = psutil.cpu_percent(interval=0, percpu=True)
         for i, percent in enumerate(percents):

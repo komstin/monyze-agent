@@ -1,11 +1,12 @@
 # monyze-agent
-MONYZE monitoring agent
+
+MONYZE monitoring service agent
 
 ================== Russian ===================
 
 ### Агент для сервиса Monyze - приложение на Питоне, собирающее системные метрики для сервиса https://monyze.ru/. 
 
-Версия 0.0.6 (22.11.2017)
+Версия 0.0.7 (26.11.2017)
 
 Обмен с сервером по заданному (нестандартному) протоколу в формате json. Не RESTful.
 
@@ -32,9 +33,8 @@ usage: monyze [-h] [-c {show,delete}] [-v] [-t TIMEOUT] [-u USERID]
 
 -h, --help
       Показать подсказку
--c {show, delete}, --config {show, delete}
-      Конфигурация: показать,
-      удалить (sudo)
+-c, --config
+      Показать конфигурацию
 -v, --version
       Показать версию
 -t TIMEOUT, --timeout TIMEOUT

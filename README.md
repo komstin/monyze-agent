@@ -23,7 +23,7 @@ MONYZE monitoring service agent
 `./monyze-agent --help`
 
 ```
-usage: monyze [-h] [-c {show,delete}] [-v] [-t TIMEOUT] [-u USERID]
+usage: monyze-agent [-h] [-c {show,delete}] [-v] [-t TIMEOUT] [-u USERID]
 ```
 
 #### Параметры командной строки:

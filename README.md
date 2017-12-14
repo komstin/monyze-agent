@@ -58,5 +58,6 @@ usage: monyze-agent [-h] [-c] [-v] [-t TIMEOUT] [-u USERID]
 
 #### Extra TODO
 - [ ] Expand for Windows
+- [ ] Security issues (incl. own user)
 - [ ] Advisable: rebuild the backend, change the protocol to REST.
 - [ ] It's best to radically reconstruct the project design.

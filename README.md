@@ -45,6 +45,11 @@ usage: monyze-agent [-h] [-c] [-v] [-t TIMEOUT] [-u USERID]
 
 Подробнее - на сайте https://monyze.ru
 ```
+#### Установка и работа
+
+#### Использованные библиотеки
+
+#### Совместимость
 
 #### TODO List for Monyze Project
 
@@ -54,7 +59,7 @@ usage: monyze-agent [-h] [-c] [-v] [-t TIMEOUT] [-u USERID]
 - [x] Daemonize
 - [x] Setup as a service
 - [x] Logging
-- [ ] Extend for misc Linux'es
+- [x] Extend for misc Linux'es
 
 #### Extra TODO
 - [ ] Expand for Windows

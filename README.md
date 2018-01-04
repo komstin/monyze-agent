@@ -27,7 +27,6 @@ usage: monyze-agent [-h] [-c] [-v] [-t TIMEOUT] [-u USERID]
 ```
 
 #### Параметры командной строки:
-
 ```
 Без параметров - запуск сервиса (sudo)
 
@@ -52,7 +51,6 @@ usage: monyze-agent [-h] [-c] [-v] [-t TIMEOUT] [-u USERID]
 #### Совместимость
 
 #### TODO List for Monyze Project
-
 - [x] Setup request in preassigned format
 - [x] Collect & update system data
 - [x] Compile in one file
